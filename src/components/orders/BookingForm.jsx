@@ -137,7 +137,6 @@ const BookingForm = () => {
 				const result = await BookingAPI.CreateBooking(bookingData, token);
 				console.log("Booking created:", result);
 				toast.success("Successful booking!");
-				window.location.reload();
 			} catch (error) {
 				console.error("Booking error:", error);
 				toast.error("Booking error.");
