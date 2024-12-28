@@ -32,7 +32,7 @@ function App() {
         <div className="flex h-screen overflow-hidden text-gray-100 bg-gray-900">
             {isLoggedIn && <Sidebar />}
             <div className={`flex-1 ${isLoggedIn ? "relative overflow-y-auto" : "absolute inset-0"}`}>
-                <Routes>
+                <Routes basename="/login">
                     <Route
                         path="/login"
                         element={!isLoggedIn ? <Login onLogin={() => setIsLoggedIn(true)} /> : <Navigate to="/" />}
