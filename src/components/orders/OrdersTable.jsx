@@ -127,7 +127,8 @@ const OrdersTable = () => {
                                 
                                 <tr key={order.booking_id}>
                                     <td className='px-6 py-4 text-sm text-gray-300'>
-                                        {users[order.user] ? users[order.user].username || users[order.user].full_name : "Loading..."}
+                                        {/* {users[order.user] ? users[order.user].username || users[order.user].full_name : "Loading..."} */}
+                                        {order.full_name}
                                     </td>
                                     <td className='px-6 py-4 text-sm text-gray-300'>${order.total}</td>
                                     <td className='px-6 py-4 text-sm text-gray-300'>{order.payment_status}</td>
