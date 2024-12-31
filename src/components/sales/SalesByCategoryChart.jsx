@@ -42,15 +42,11 @@ const SalesByCategoryChart = () => {
 					Refunded: statuses.filter(status => status === "refunded").length,
 				};
 
-				console.log('Booking status counts:', statusCount); // In ra kết quả đếm
-
 				// Chuyển đổi dữ liệu thành mảng cho biểu đồ
 				const chartData = Object.entries(statusCount).map(([name, value]) => ({
 					name,
 					value,
 				}));
-
-				console.log('Chart data:', chartData);
 
 				setPaymentData(chartData); // Cập nhật dữ liệu biểu đồ
 			} catch (error) {

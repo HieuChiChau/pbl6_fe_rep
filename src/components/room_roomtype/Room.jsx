@@ -30,7 +30,6 @@ const ProductsTable = () => {
 			try {
 
 				const roomsData = await RoomAPI.getRoom(token)
-				console.log("Fetched Rooms Data:", roomsData)
 				setRooms(roomsData)
 				setFilteredProducts(roomsData)
 
@@ -92,7 +91,7 @@ const ProductsTable = () => {
 					updatedRoomData.is_available = newRoom.is_available;
 				}
 				if (Object.keys(updatedRoomData).length === 0) {
-					toast.info("Không có thay đổi nào để cập nhật.");
+					toast.info("There are no changes to update.");
 					return;
 				}
 
@@ -106,7 +105,7 @@ const ProductsTable = () => {
 				setRooms(updatedRooms);
 				setFilteredProducts(updatedRooms);
 
-				toast.success("Phòng đã được cập nhật thành công!");
+				toast.success("Room has been updated successfully!");
 			} else {
 				// Thêm phòng mới
 				const createdRoom = await RoomAPI.createRoom(token, newRoom);
@@ -114,7 +113,7 @@ const ProductsTable = () => {
 				setRooms([...rooms, createdRoom]);
 				setFilteredProducts([...filteredProducts, createdRoom]);
 
-				toast.success("Phòng đã được thêm thành công!");
+				toast.success("Room has been added successfully!");
 			}
 
 			// Reset form và đóng modal
@@ -131,7 +130,7 @@ const ProductsTable = () => {
 			if (error.response && error.response.data && error.response.data.error) {
 				toast.error(error.response.data.error);
 			} else {
-				toast.error("Có lỗi xảy ra, vui lòng thử lại.");
+				toast.error("An error occurred, please try again.");
 			}
 		}
 	};

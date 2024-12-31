@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import StatCard from "../components/common/StatCard";
 
-import { AlertTriangle, DollarSign, Package, TrendingUp } from "lucide-react";
-import CategoryDistributionChart from "../components/overview/CategoryDistributionChart";
-import SalesTrendChart from "../components/room_roomtype/SalesTrendChart";
+import { Package, TrendingUp } from "lucide-react";
 import ProductsTable from "../components/room_roomtype/Room";
 import RoomTypesTable from "../components/room_roomtype/RoomType";
 import Cookies from "js-cookie";
@@ -23,7 +21,6 @@ const ProductsPage = () => {
 	useEffect(() =>{
 		const fetchData = async () => {
 			try{
-				console.log('>>test token: ' + token)
 				const rooms = await RoomAPI.getRoom(token)
 	
 				

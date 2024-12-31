@@ -15,7 +15,6 @@ const logout = async (token) => {
         );
 
         localStorage.removeItem('access');
-        console.log('Logout successful:', response.data);
         return response.data;
     } catch (e) {
         console.error('Error during logout:', e);

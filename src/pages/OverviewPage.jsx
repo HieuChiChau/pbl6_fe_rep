@@ -26,8 +26,6 @@ const OverviewPage = () => {
 			try {
 				// Fetching all bookings data
 				const bookingsData = await BookingAPI.ListBooking(token);
-				console.log(bookingsData)
-
 				const sales = bookingsData
 					.map(booking => parseFloat(booking.total) || 0)
 					.reduce((acc, currentTotal) => acc + currentTotal, 0);
@@ -53,7 +51,6 @@ const OverviewPage = () => {
 			try {
 				const roomTypeAPI = new RoomTypeAPI();
 				const roomTypesResponse = await roomTypeAPI.getRoomTypes(token);
-				console.log("siuuuuu: "+ roomTypesResponse)
 				setTotalRoomTypes(roomTypesResponse.length);  // Lưu số lượng loại phòng
 			} catch (error) {
 				console.error("Error fetching room types:", error);

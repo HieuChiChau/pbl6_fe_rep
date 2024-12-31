@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
@@ -33,15 +33,14 @@ const BookingForm = () => {
 		const fetchCustomers = async () => {
 			try {
 				const response = await CustomerAPI.getCustomers(token);
-				console.log(response);
 				if (response && response.length > 0) {
 					setCustomers(response);
 				} else {
-					toast.warn("Không có khách hàng nào!");
+					toast.warn("No customers!");
 				}
 			} catch (error) {
 				console.error("Error fetching customers:", error);
-				toast.error("Lỗi khi tải danh sách khách hàng.");
+				toast.error("Error loading customer list.");
 			}
 		};
 
@@ -52,15 +51,14 @@ const BookingForm = () => {
 		const fetchCoupons = async () => {
 			try {
 				const response = await BookingAPI.ListCoupons(token);
-				console.log(response);
 				if (response && response.length > 0) {
 					setCoupons(response);  // Lưu danh sách coupons vào state
 				} else {
-					toast.warn("Không có coupon nào!");
+					toast.warn("No coupons!");
 				}
 			} catch (error) {
 				console.error("Error fetching coupons:", error);
-				toast.error("Lỗi khi tải danh sách coupon.");
+				toast.error("Error loading coupon list.");
 			}
 		};
 
@@ -79,7 +77,7 @@ const BookingForm = () => {
 
 	const handleCheckRooms = async () => {
 		if (!checkInDate || !checkOutDate) {
-			toast.warn("Vui lòng chọn ngày check-in và check-out");
+			toast.warn("Please select check-in and check-out date");
 			return;
 		}
 
@@ -92,7 +90,6 @@ const BookingForm = () => {
 				formattedCheckOutDate,
 				token
 			);
-			console.log(response);
 
 			if (response.error) {
 				alert(response.error);
@@ -101,7 +98,7 @@ const BookingForm = () => {
 			}
 		} catch (err) {
 			console.error("Error fetching available rooms:", err);
-			toast.error("Đã xảy ra lỗi khi kiểm tra phòng trống.");
+			toast.error("An error occurred while checking room availability.");
 		}
 	};
 
@@ -132,7 +129,6 @@ const BookingForm = () => {
 				num_children: parseInt(numChildren),
 				payment_intent: paymentIntent,
 			};
-			console.log(bookingData)
 			try {
 				const result = await BookingAPI.CreateBooking(bookingData, token);
 				console.log("Booking created:", result);
@@ -346,7 +342,7 @@ const BookingForm = () => {
 								<option key={coupon.cid} value={coupon.cid}>
 									{coupon.type === "Percentage"
 										? `${coupon.discount}% Off`
-										: `${coupon.discount} VND Off`}
+										: `${coupon.discount}.0 USD Off`}
 								</option>
 							))}
 						</select>

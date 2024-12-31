@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import RoomAPI from "../../api/room"
@@ -20,8 +20,8 @@ const CategoryDistributionChart = () => {
 				const notAvailableRooms = rooms.filter(room => !room.is_available).length;
 
 				setRoomData([
-					{ name: 'Phòng trống', value: availableRooms },
-					{ name: 'Phòng đã đặt', value: notAvailableRooms }
+					{ name: 'Available', value: availableRooms },
+					{ name: 'Not Available', value: notAvailableRooms }
 				]);
 			} catch (error) {
 				console.error('Error fetching room data:', error);

@@ -24,7 +24,6 @@ const OrdersTable = () => {
                 const data = await BookingAPI.ListBooking(token);
                 setOrders(Array.isArray(data) ? data : []); // Đảm bảo luôn là mảng
                 setFilteredOrders(Array.isArray(data) ? data : []);
-                console.log("cccc" + data)
                 const userDetails = {};
                 const userRequests = (data || []).map((order) =>
                     CustomerAPI.CustomerDetali(order.user, token).then((user) => {
